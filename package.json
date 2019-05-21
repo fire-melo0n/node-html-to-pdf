@@ -1,10 +1,11 @@
 {
   "name": "html-to-pdf",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "build:watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
@@ -15,13 +16,14 @@
   "devDependencies": {
     "@types/lodash": "^4.14.129",
     "@types/puppeteer": "^1.12.4",
+    "@types/uuid": "^3.4.4",
     "typescript": "^3.4.5"
   },
   "types": "./index.d.ts",
   "dependencies": {
-    "@types/handlebars": "^4.1.0",
     "handlebars": "^4.1.2",
     "lodash": "^4.17.11",
-    "puppeteer": "^1.16.0"
+    "puppeteer": "^1.16.0",
+    "uuid": "^3.3.2"
   }
 }
