@@ -1,8 +1,9 @@
 {
-  "name": "html-to-pdf",
-  "version": "0.0.1",
-  "description": "",
+  "name": "node-html-to-pdf",
+  "version": "1.0.0",
+  "description": "Generate PDF's from HTML using Puppeteer and Handlebars.",
   "main": "./dist/index.js",
+  "homepage": "https://github.com/fire-melo0n/html-to-pdf",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch"
@@ -11,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/fire-melo0n/html-to-pdf.git"
   },
-  "author": "",
+  "author": "Jamie Hall",
   "license": "ISC",
   "devDependencies": {
     "@types/lodash": "^4.14.129",
@@ -22,7 +23,6 @@
   "types": "./index.d.ts",
   "dependencies": {
     "handlebars": "^4.1.2",
-    "lodash": "^4.17.11",
     "puppeteer": "^1.16.0",
     "uuid": "^3.3.2"
   }

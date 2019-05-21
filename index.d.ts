@@ -30,7 +30,7 @@ export default class HTMLToPDF {
       templatePath: string,
       data: object,
       options?: {
-        puppeteerPDFOptions: PDFOptions,
+        puppeteerPDFOptions?: PDFOptions,
         handlbarsCompileOptions?: HandlebarsCompileOptions
       }
     }

@@ -1,5 +1,4 @@
 import * as puppeteer from 'puppeteer';
-import * as _ from 'lodash';
 import * as handlebars from 'handlebars';
 import * as fs from 'fs';
 import * as uuid from 'uuid';
