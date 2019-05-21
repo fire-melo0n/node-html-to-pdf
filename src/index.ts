@@ -4,29 +4,7 @@ import * as handlebars from 'handlebars';
 import * as fs from 'fs';
 import * as uuid from 'uuid';
 import * as path from 'path';
-
-// Copied from handlebars as it doesn't export the interface.
-interface HandlebarsCompileOptions {
-  data?: boolean;
-  compat?: boolean;
-  knownHelpers?: {
-    helperMissing?: boolean;
-    blockHelperMissing?: boolean;
-    each?: boolean;
-    if?: boolean;
-    unless?: boolean;
-    with?: boolean;
-    log?: boolean;
-    lookup?: boolean;
-  };
-  knownHelpersOnly?: boolean;
-  noEscape?: boolean;
-  strict?: boolean;
-  assumeObjects?: boolean;
-  preventIndent?: boolean;
-  ignoreStandalone?: boolean;
-  explicitPartialContext?: boolean;
-}
+import { HandlebarsCompileOptions } from '../index.d';
 
 export default class HTMLToPDF {
 
@@ -40,7 +18,7 @@ export default class HTMLToPDF {
       data: object,
       options?: {
         puppeteerPDFOptions?: puppeteer.PDFOptions,
-        handlbarsOptions?: HandlebarsCompileOptions
+        handlbarsCompileOptions?: HandlebarsCompileOptions
       }
     }
   ) {}
@@ -48,7 +26,7 @@ export default class HTMLToPDF {
   /**
    * Generate PDF and return either file path or Buffer.
    */
-  async getPDF(): Promise<string|Buffer> {
+  async build(): Promise<string|Buffer> {
 
     // Get contents of template file
     var template = await this._getTemplate(this.params.templatePath);

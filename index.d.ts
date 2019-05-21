@@ -1,5 +1,28 @@
 import { PDFOptions } from 'puppeteer';
 
+// Copied from handlebars as it doesn't export the interface.
+export interface HandlebarsCompileOptions {
+  data?: boolean;
+  compat?: boolean;
+  knownHelpers?: {
+    helperMissing?: boolean;
+    blockHelperMissing?: boolean;
+    each?: boolean;
+    if?: boolean;
+    unless?: boolean;
+    with?: boolean;
+    log?: boolean;
+    lookup?: boolean;
+  };
+  knownHelpersOnly?: boolean;
+  noEscape?: boolean;
+  strict?: boolean;
+  assumeObjects?: boolean;
+  preventIndent?: boolean;
+  ignoreStandalone?: boolean;
+  explicitPartialContext?: boolean;
+}
+
 export default class HTMLToPDF {
 
   constructor(
@@ -7,12 +30,13 @@ export default class HTMLToPDF {
       templatePath: string,
       data: object,
       options?: {
-        puppeteerPDFOptions: PDFOptions
+        puppeteerPDFOptions: PDFOptions,
+        handlbarsCompileOptions?: HandlebarsCompileOptions
       }
     }
   );
 
-  getPDF(): Promise<string|Buffer>;
+  build(): Promise<string|Buffer>;
 
   private _getTemplate(filePath: string): Promise<string>;
 
