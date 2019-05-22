@@ -7,10 +7,6 @@ import { HandlebarsCompileOptions } from '../index.d';
 
 export default class HTMLToPDF {
 
-  browser: puppeteer.Browser;
-  page: puppeteer.Page;
-  html: string;
-
   constructor(
     private params: {
       templatePath: string,
@@ -38,6 +34,9 @@ export default class HTMLToPDF {
 
     // Create PDF using Puppeteer
     var buffer = await this._createPDF(htmlPath);
+
+    // Remove temp HTML file.
+    await this._removeFile(htmlPath);
 
     // Either return the file path of new PDF or Buffer of new PDF
     if (this.params.options.puppeteerPDFOptions.path) {
@@ -70,7 +69,6 @@ export default class HTMLToPDF {
   ): Promise<string> {
     return new Promise((resolve) => {
       var parser = handlebars.compile(template);
-      console.log('_parseTemplate -> data', data);
       return resolve(parser(data));
     });
   }
@@ -79,7 +77,6 @@ export default class HTMLToPDF {
    * Temporarily write html to a file for puppeteer to read.
    */
   private async _saveHTML(html: string): Promise<string> {
-    console.log('_saveHTML -> html', html);
     var filePath = path.resolve('./', 'temp', `${uuid.v4()}.html`);
     return new Promise((resolve, reject) => {
       fs.writeFile(filePath, html, err => {
@@ -96,10 +93,21 @@ export default class HTMLToPDF {
     var browser = await puppeteer.launch();
     var page = await browser.newPage();
     await page.goto(`file://${htmlPath}`);
-    await page.emulateMedia('screen');
     var pdf = await page.pdf(this.params.options.puppeteerPDFOptions);
     await browser.close();
     return pdf;
+  }
+
+  /**
+   * Remove a file.
+   */
+  private async _removeFile(filePath: string): Promise<string|void> {
+    return new Promise((resolve, reject) => {
+      fs.unlink(filePath, (err) => {
+        if (err) return reject(err);
+        else return resolve();
+      });
+    });
   }
 
 }

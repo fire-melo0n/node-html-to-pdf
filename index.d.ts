@@ -49,4 +49,6 @@ export default class HTMLToPDF {
 
   private _createPDF(htmlPath: string): Promise<Buffer>;
 
+  private _removeFile(filePath: string): Promise<string|void>;
+
 }

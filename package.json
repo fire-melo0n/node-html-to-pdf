@@ -18,6 +18,13 @@
     "typescript": "^3.4.5"
   },
   "types": "./index.d.ts",
+  "files": [
+    "dist/**/*",
+    "index.d.ts",
+    "package.json",
+    "package-lock.json",
+    "README.md"
+  ],
   "dependencies": {
     "@types/puppeteer": "^1.12.4",
     "@types/uuid": "^3.4.4",
