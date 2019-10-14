@@ -13,6 +13,7 @@ export default class HTMLToPDF {
       data: object,
       options?: {
         puppeteerPDFOptions?: puppeteer.PDFOptions,
+        puppeteerLaunchOptions?: puppeteer.LaunchOptions,
         handlbarsCompileOptions?: HandlebarsCompileOptions
       }
     }
@@ -90,7 +91,7 @@ export default class HTMLToPDF {
    * Create browser page to render HTML.
    */
   private async _createPDF(htmlPath: string): Promise<Buffer> {
-    var browser = await puppeteer.launch();
+    var browser = await puppeteer.launch(this.params.options.puppeteerLaunchOptions);
     var page = await browser.newPage();
     await page.goto(`file://${htmlPath}`);
     var pdf = await page.pdf(this.params.options.puppeteerPDFOptions);
