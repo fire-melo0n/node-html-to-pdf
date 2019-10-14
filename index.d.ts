@@ -1,4 +1,4 @@
-import { PDFOptions } from 'puppeteer';
+import { PDFOptions, LaunchOptions } from 'puppeteer';
 
 // Copied from handlebars as it doesn't export the interface.
 export interface HandlebarsCompileOptions {
@@ -31,6 +31,7 @@ export default class HTMLToPDF {
       data: object,
       options?: {
         puppeteerPDFOptions?: PDFOptions,
+        puppeteerLaunchOptions?: LaunchOptions,
         handlbarsCompileOptions?: HandlebarsCompileOptions
       }
     }
