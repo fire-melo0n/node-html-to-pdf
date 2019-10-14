@@ -1,6 +1,6 @@
 {
   "name": "node-html-to-pdf",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Generate PDF's from HTML using Puppeteer and Handlebars.",
   "main": "./dist/index.js",
   "homepage": "https://github.com/fire-melo0n/html-to-pdf",
