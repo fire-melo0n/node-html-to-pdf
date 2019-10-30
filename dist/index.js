@@ -118,7 +118,7 @@ var HTMLToPDF = (function () {
             var browser, page, pdf;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, puppeteer.launch()];
+                    case 0: return [4, puppeteer.launch(this.params.options.puppeteerLaunchOptions)];
                     case 1:
                         browser = _a.sent();
                         return [4, browser.newPage()];
